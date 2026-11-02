@@ -10,4 +10,4 @@ RUN npm run build
 FROM nginx:1.29-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /repo/site/dist /usr/share/nginx/html
-HEALTHCHECK --interval=30s --timeout=5s CMD wget -qO- http://127.0.0.1/ > /dev/null || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --start-interval=1s CMD wget -qO- http://127.0.0.1/ > /dev/null || exit 1
