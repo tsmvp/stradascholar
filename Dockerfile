@@ -5,7 +5,7 @@ COPY site/package.json site/package-lock.json ./
 RUN npm ci
 COPY content /repo/content
 COPY site ./
-RUN npm run build
+RUN npm test && npm run build
 
 FROM nginx:1.29-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf

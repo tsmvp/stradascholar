@@ -22,7 +22,11 @@ const cars = (await getCars()).filter((c) => c.data.tutorials.length);
           </h2>
           <div class="list">
             {car.data.tutorials.map((t) => {
-              const used = t.uses.map((name) => car.data.parts.find((p) => p.name === name)!);
+              const used = t.uses.map((name) => {
+                const part = car.data.parts.find((p) => p.name === name);
+                if (!part) throw new Error(`content/cars/${car.id}/car.yaml: tutorial "${t.title}" uses "${name}", which is not in parts`);
+                return part;
+              });
               return (
                 <article class="tut">
                   <a class="thumb" href={watchUrl(t.video, t.at)} target="_blank" rel="noopener">
