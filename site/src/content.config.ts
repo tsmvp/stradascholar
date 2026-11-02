@@ -16,7 +16,7 @@ export const categories = [
   'Tools',
 ] as const;
 
-const pair = z.object({ label: z.string(), value: z.string() });
+const pair = z.strictObject({ label: z.string(), value: z.string() });
 
 const part = z.object({
   name: z.string(),

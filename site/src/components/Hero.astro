@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  photo?: ImageMetadata;
+  /** Remote fallback (YouTube thumbnail) when no photo exists. */
+  fallback?: string;
+  alt: string;
+  tall?: boolean;
+}
+
+const { photo, fallback, alt, tall = false } = Astro.props;
+---
+
+<section class:list={['hero', { tall }]}>
+  {
+    photo ? (
+      <Image src={photo} alt={alt} widths={[640, 1280, 1920, 2560]} sizes="100vw" loading="eager" fetchpriority="high" />
+    ) : (
+      fallback && <img src={fallback} alt={alt} />
+    )
+  }
+  <div class="shade"></div>
+  <div class="wrap txt"><slot /></div>
+</section>
+
+<style>
+  .hero { position: relative; min-height: clamp(360px, 62vh, 640px); display: flex; align-items: flex-end; overflow: hidden; }
+  .hero.tall { min-height: clamp(440px, 82vh, 820px); }
+  .hero :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, var(--bg) 2%, color-mix(in srgb, var(--bg) 55%, transparent) 40%, transparent 75%);
+  }
+  .txt { position: relative; width: 100%; padding-bottom: clamp(24px, 5vw, 56px); }
+</style>

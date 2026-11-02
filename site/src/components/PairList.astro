@@ -1,0 +1,32 @@
+---
+interface Props {
+  items: { label: string; value: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<dl class="pairs">
+  {
+    items.map((i) => (
+      <div>
+        <dt>{i.label}</dt>
+        <dd>{i.value}</dd>
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .pairs { margin: 0; }
+  .pairs div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  dt { color: var(--muted); }
+  dd { margin: 0; text-align: right; font-weight: 600; }
+</style>

@@ -1,0 +1,151 @@
+---
+import type { Part } from '../lib/content';
+import { buyUrl, formatTime, watchUrl } from '../lib/links';
+import { affiliateIds, storeNames } from '../affiliates';
+
+interface Row {
+  part: Part;
+  car?: { slug: string; name: string };
+}
+
+interface Props {
+  rows: Row[];
+  /** Show car column and car filter (site-wide list). */
+  byCar?: boolean;
+}
+
+const { rows, byCar = false } = Astro.props;
+const categories = [...new Set(rows.map((r) => r.part.category))];
+const cars = byCar ? [...new Map(rows.filter((r) => r.car).map((r) => [r.car!.slug, r.car!.name])).entries()] : [];
+---
+
+<div class="parts" data-parts>
+  <div class="filters" role="group" aria-label="Filter by category">
+    <button type="button" class="chip on" data-filter="cat" data-value="">All</button>
+    {categories.map((c) => <button type="button" class="chip" data-filter="cat" data-value={c}>{c}</button>)}
+  </div>
+  {
+    byCar && (
+      <div class="filters" role="group" aria-label="Filter by car">
+        <button type="button" class="chip on" data-filter="car" data-value="">All cars</button>
+        {cars.map(([slug, name]) => <button type="button" class="chip" data-filter="car" data-value={slug}>{name}</button>)}
+      </div>
+    )
+  }
+  <table>
+    <thead>
+      <tr>
+        <th>Part</th>
+        {byCar && <th>Car</th>}
+        <th>Category</th>
+        <th>Video</th>
+        <th><span class="sr">Buy</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map(({ part, car }) => (
+          <tr data-cat={part.category} data-car={car?.slug ?? ''}>
+            <td class="name">
+              <strong>{part.name}</strong>
+              {part.brand && <span class="brand">{part.brand}</span>}
+              {part.note && <span class="note">{part.note}</span>}
+            </td>
+            {byCar && <td class="car">{car && <a href={`/builds/${car.slug}/`}>{car.name}</a>}</td>}
+            <td class="cat">{part.category}</td>
+            <td class="watch">
+              {part.video && part.at !== undefined && (
+                <a href={watchUrl(part.video, part.at)} target="_blank" rel="noopener">▶ {formatTime(part.at)}</a>
+              )}
+            </td>
+            <td class="buy">
+              {part.links.length ? (
+                part.links.map((l) => (
+                  <a class="btn" href={buyUrl(l.store, l.url, affiliateIds)} target="_blank" rel="sponsored noopener">
+                    Shop<span class="store"> · {storeNames[l.store] ?? l.store}</span>
+                  </a>
+                ))
+              ) : (
+                <span class="nolink">No link</span>
+              )}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<script>
+  for (const box of document.querySelectorAll<HTMLElement>('[data-parts]')) {
+    const active: Record<string, string> = { cat: '', car: '' };
+    box.addEventListener('click', (e) => {
+      const chip = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-filter]');
+      if (!chip) return;
+      const key = chip.dataset.filter!;
+      active[key] = chip.dataset.value!;
+      for (const c of box.querySelectorAll<HTMLElement>(`[data-filter="${key}"]`)) c.classList.toggle('on', c === chip);
+      for (const row of box.querySelectorAll<HTMLElement>('tbody tr')) {
+        row.hidden = Object.entries(active).some(([k, v]) => v && row.dataset[k] !== v);
+      }
+    });
+  }
+</script>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .chip {
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font: 600 0.8rem/1 var(--head);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .chip.on { background: var(--m-dark); border-color: var(--m-dark); color: #fff; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  th {
+    text-align: left;
+    font: 600 0.75rem/1 var(--head);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  td { padding: 14px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .name strong { display: block; font-weight: 600; }
+  .brand { display: block; font: 600 0.8rem/1.4 var(--head); letter-spacing: 0.08em; text-transform: uppercase; color: var(--label); }
+  .note { display: block; color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+  .cat, .car { color: var(--muted); white-space: nowrap; }
+  .watch a { color: var(--link); text-decoration: none; white-space: nowrap; font-weight: 600; }
+  .buy { text-align: right; white-space: nowrap; }
+  .buy .btn { padding: 8px 12px; margin: 2px 0 2px 4px; }
+  .store { font-weight: 400; opacity: 0.85; }
+  .nolink {
+    display: inline-block;
+    padding: 7px 12px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font: 600 0.8rem/1 var(--head);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .sr { position: absolute; left: -9999px; }
+  tr[hidden] { display: none; }
+
+  @media (max-width: 760px) {
+    thead { display: none; }
+    table, tbody, tr, td { display: block; }
+    tr { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    td { border: 0; padding: 2px 0; }
+    .cat, .car { display: inline; font-size: 0.85rem; }
+    .car::after { content: ' · '; }
+    .watch { display: inline-block; margin-left: 10px; font-size: 0.9rem; }
+    .buy { text-align: left; white-space: normal; margin-top: 8px; }
+    .buy .btn { margin: 4px 6px 0 0; }
+  }
+</style>

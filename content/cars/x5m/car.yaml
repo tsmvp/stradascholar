@@ -12,19 +12,19 @@ overview: |
 
   Episode 2 is the conversion. With Nick, Lucas replaced the rain trays and start/stop button and stripped the front end and sides. They pulled an all-nighter on bodywork, then wrapped the car, fitted the X5M bumpers, skirts, grilles and ducts, and built a quad-exit exhaust from the stock pipes. Lucas calls it the world's first diesel X5M, done in just under a week. A lift kit, wheels and tires come next.
 spec:
-  - { label: Chassis, value: E70 X5 xDrive35d (2011) }
-  - { label: Engine, value: 3.0L six-cylinder diesel, deleted }
+  - { label: Chassis, value: "E70 X5 xDrive35d (2011)" }
+  - { label: Engine, value: "3.0L six-cylinder diesel, deleted" }
   - { label: Mileage, value: "432,000 km at purchase" }
-  - { label: Exterior, value: X5M bumpers, side skirts, grilles and ducts; full wrap }
-  - { label: Exhaust, value: Custom quad-exit Y-pipe by Nick }
+  - { label: Exterior, value: "X5M bumpers, side skirts, grilles and ducts; full wrap" }
+  - { label: Exhaust, value: "Custom quad-exit Y-pipe by Nick" }
 stats:
   - { label: Purchase price, value: "$4,200" }
   - { label: Kilometres, value: "432k" }
   - { label: Conversion time, value: "< 1 week" }
 setup:
   - { label: Brakes, value: "New pads and rotors front and rear; ECS stainless lines (previous owner)" }
-  - { label: Suspension, value: Lift kit coming in the next episode }
-  - { label: Wheels & tires, value: New set coming in the next episode }
+  - { label: Suspension, value: "Lift kit coming in the next episode" }
+  - { label: Wheels & tires, value: "New set coming in the next episode" }
 parts:
   - name: Brake light switch adjustment
     category: Brakes

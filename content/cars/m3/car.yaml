@@ -12,21 +12,21 @@ overview: |
 
   It's the car Lucas took the buy-once, cry-once approach with, and both cupholders still work. Next up: F80 brakes, with hubs and spindles.
 spec:
-  - { label: Chassis, value: E92 M3 coupe (2013), competition package }
+  - { label: Chassis, value: "E92 M3 coupe (2013), competition package" }
   - { label: Edition, value: "Frozen Edition, one of the last 150" }
-  - { label: Paint, value: Monte Carlo blue with satin clear }
-  - { label: Engine, value: S65 4.0L V8, naturally aspirated }
-  - { label: Transmission, value: DCT with GTS software }
-  - { label: Owned since, value: May 2017 }
+  - { label: Paint, value: "Monte Carlo blue with satin clear" }
+  - { label: Engine, value: "S65 4.0L V8, naturally aspirated" }
+  - { label: Transmission, value: "DCT with GTS software" }
+  - { label: Owned since, value: "May 2017" }
 stats:
   - { label: Years owned, value: "~9" }
-  - { label: Engine, value: NA V8 }
-  - { label: Next, value: F80 brakes }
+  - { label: Engine, value: "NA V8" }
+  - { label: Next, value: "F80 brakes" }
 setup:
-  - { label: Wheels, value: Factory-style 359M, refinished in silver }
-  - { label: Tires, value: Michelin Pilot Sport 4S }
-  - { label: Suspension, value: KW Clubsport coilovers }
-  - { label: Studs, value: FCP Euro wheel stud conversion }
+  - { label: Wheels, value: "Factory-style 359M, refinished in silver" }
+  - { label: Tires, value: "Michelin Pilot Sport 4S" }
+  - { label: Suspension, value: "KW Clubsport coilovers" }
+  - { label: Studs, value: "FCP Euro wheel stud conversion" }
 parts:
   - name: Carbon front fangs, side skirts and rear wing
     brand: RW Carbon

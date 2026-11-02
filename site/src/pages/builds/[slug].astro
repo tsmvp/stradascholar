@@ -1,0 +1,144 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import PairList from '../../components/PairList.astro';
+import PartsTable from '../../components/PartsTable.astro';
+import Gallery from '../../components/Gallery.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import { getCars, getVideos, type Car } from '../../lib/content';
+import { carPhotos } from '../../lib/photos';
+import { thumbUrl } from '../../lib/links';
+
+export async function getStaticPaths() {
+  return (await getCars()).map((car) => ({ params: { slug: car.id }, props: { car } }));
+}
+
+const { car } = Astro.props as { car: Car };
+const d = car.data;
+const videos = await getVideos(car.id);
+const photos = carPhotos(car.id);
+const parts = d.parts.filter((p) => p.kind === 'part');
+const tools = d.parts.filter((p) => p.kind === 'tool');
+const rows = [...parts, ...tools].map((part) => ({ part }));
+const stats = [
+  ...d.stats,
+  { label: 'Parts', value: String(parts.length) },
+  ...(tools.length ? [{ label: 'Tools', value: String(tools.length) }] : []),
+  { label: videos.length === 1 ? 'Video' : 'Videos', value: String(videos.length) },
+];
+const title = `${d.year} BMW ${d.name}`;
+const sections = [
+  ['overview', 'Overview'],
+  ['parts', 'Parts & tools'],
+  ['setup', 'Wheels & suspension'],
+  ...(photos.gallery.length ? [['gallery', 'Gallery']] : []),
+  ['videos', 'Videos'],
+];
+---
+
+<Base title={title} description={`${d.hook} Every part, tool and video for Lucas's ${title}.`} image={photos.hero?.src ?? (videos[0] && thumbUrl(videos[0].id))}>
+  <Hero photo={photos.hero} fallback={videos[0] && thumbUrl(videos[0].id)} alt={title}>
+    <p class="label">{d.year} · {d.chassis} · {d.engine}</p>
+    <h1>{d.headline}</h1>
+    <p class="name">{title}</p>
+  </Hero>
+
+  <nav class="jump" aria-label="On this page">
+    <div class="wrap">
+      {sections.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="stats">
+      {
+        stats.map((s) => (
+          <div>
+            <b>{s.value}</b>
+            <span>{s.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <section class="section" id="overview">
+    <div class="wrap two">
+      <div class="prose">
+        <h2>Overview</h2>
+        {d.overview.trim().split(/\n\s*\n/).map((p) => <p>{p}</p>)}
+      </div>
+      <aside>
+        <h3>Spec</h3>
+        <PairList items={d.spec} />
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="parts">
+    <div class="wrap">
+      <h2>Parts &amp; tools</h2>
+      <p class="muted">Everything Lucas has named on this car. ▶ jumps to the moment in the video.</p>
+      <PartsTable rows={rows} />
+    </div>
+  </section>
+
+  <section class="section" id="setup">
+    <div class="wrap narrow">
+      <h2>Wheels &amp; suspension</h2>
+      <PairList items={d.setup} />
+    </div>
+  </section>
+
+  {
+    photos.gallery.length > 0 && (
+      <section class="section" id="gallery">
+        <div class="wrap">
+          <h2>Gallery</h2>
+          <Gallery photos={photos.gallery} alt={title} />
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section" id="videos">
+    <div class="wrap">
+      <h2>Videos</h2>
+      <div class="grid">{videos.map((v) => <VideoCard video={v} />)}</div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .name { margin: 0; color: var(--muted); font-weight: 600; }
+  .jump { border-bottom: 1px solid var(--line); position: sticky; top: 61px; z-index: 10; background: var(--overlay); backdrop-filter: blur(8px); }
+  .jump .wrap { display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; }
+  .jump a {
+    padding: 12px 0;
+    white-space: nowrap;
+    color: var(--muted);
+    text-decoration: none;
+    font: 600 0.8rem/1 var(--head);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .jump a:hover { color: var(--text); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 28px;
+  }
+  .stats div { background: var(--surface); padding: 14px 16px; }
+  .stats b { display: block; font: italic 800 1.9rem/1.1 var(--head); }
+  .stats span { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .two { display: grid; gap: 40px; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+  .prose p { max-width: 68ch; }
+  .narrow { max-width: 760px; }
+  section[id] { scroll-margin-top: 110px; }
+  @media (max-width: 860px) {
+    .two { grid-template-columns: 1fr; }
+  }
+</style>

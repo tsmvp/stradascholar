@@ -12,21 +12,21 @@ overview: |
 
   Under the hood, a Speedtech top-mount kit with a Garrett GTW3684R replaced the twin turbos. It wasn't built to chase numbers or the track: Lucas wanted a fast street car that's easy to live with, and the single turbo frees up room in the engine bay. No more dropping the subframe to reach the water pump.
 spec:
-  - { label: Chassis, value: E82 135i coupe (2009) }
-  - { label: Engine, value: N54 3.0L, Speedtech top-mount single turbo }
-  - { label: Turbo, value: Garrett GTW3684R }
-  - { label: Clutch, value: DKM Stage 3 twin disc with flywheel }
-  - { label: Exterior, value: Full OEM 1M conversion, LCI, steel rear arches }
-  - { label: Finish, value: 3M satin white aluminum wrap }
+  - { label: Chassis, value: "E82 135i coupe (2009)" }
+  - { label: Engine, value: "N54 3.0L, Speedtech top-mount single turbo" }
+  - { label: Turbo, value: "Garrett GTW3684R" }
+  - { label: Clutch, value: "DKM Stage 3 twin disc with flywheel" }
+  - { label: Exterior, value: "Full OEM 1M conversion, LCI, steel rear arches" }
+  - { label: Finish, value: "3M satin white aluminum wrap" }
 stats:
   - { label: Wheel horsepower, value: "~550" }
-  - { label: All-in (DIY, CAD), value: "~$25k" }
+  - { label: "All-in, DIY (CAD)", value: "~$25k" }
   - { label: 1M exterior incl. paint, value: "~$13k" }
 setup:
   - { label: Wheels, value: "18-inch BMW M Parallel (from an E38 750)" }
-  - { label: Tires, value: Firestone Firehawk Indy 500 }
-  - { label: Suspension, value: BC Racing BR coilovers }
-  - { label: Studs, value: FCP Euro wheel stud conversion }
+  - { label: Tires, value: "Firestone Firehawk Indy 500" }
+  - { label: Suspension, value: "BC Racing BR coilovers" }
+  - { label: Studs, value: "FCP Euro wheel stud conversion" }
 parts:
   - name: OEM 1M exterior conversion
     brand: BMW

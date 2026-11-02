@@ -28,6 +28,13 @@ test('every tutorial uses parts listed on its car', () => {
   }
 });
 
+test('spec, stats and setup entries hold only a label and a value', () => {
+  for (const car of cars)
+    for (const key of ['spec', 'stats', 'setup'])
+      for (const pair of car[key] ?? [])
+        assert.deepEqual(Object.keys(pair).sort(), ['label', 'value'], `${car.slug} ${key}: ${JSON.stringify(pair)} (quote values with commas)`);
+});
+
 test('part names are unique per car', () => {
   for (const car of cars) {
     const names = (car.parts ?? []).map((p: { name: string }) => p.name);
