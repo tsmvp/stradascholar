@@ -1,0 +1,14 @@
+# Runs anywhere Docker does. Static site, no state.
+name: stradascholar
+services:
+  site:
+    build: .
+    image: stradascholar-site
+    ports:
+      - "127.0.0.1:8090:80"
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

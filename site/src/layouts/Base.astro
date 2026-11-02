@@ -1,0 +1,214 @@
+---
+import '../styles/global.css';
+import { nav, channelUrl } from '../nav';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description = 'BMW builds by Lucas Rodrigues: every part, tool and video.', image } = Astro.props;
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const fullTitle = title === 'Home' ? 'stradascholar | BMW builds, every part' : `${title} | stradascholar`;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800&family=Barlow:wght@400;600&display=swap"
+    />
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="m-stripe" aria-hidden="true"><i></i><i></i><i></i></div>
+    <header class="top">
+      <div class="top-in">
+        <a class="logo" href="/" aria-label="stradascholar home">
+          <img class="for-dark" src="/logo-light.png" alt="stradascholar" width="900" height="105" />
+          <img class="for-light" src="/logo-dark.png" alt="stradascholar" width="900" height="105" />
+        </a>
+        <nav id="menu" class="menu" aria-label="Main">
+          <ul>
+            {nav.map((n) => (
+              <li>
+                <a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div class="tools">
+          <button class="theme" type="button" aria-label="Switch light or dark mode">
+            <span class="track"><span class="knob"></span></span>
+          </button>
+          <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot-in">
+        <div>
+          <a class="logo logo-foot" href="/" aria-label="stradascholar home">
+            <img class="for-dark" src="/logo-light.png" alt="stradascholar" width="900" height="105" />
+            <img class="for-light" src="/logo-dark.png" alt="stradascholar" width="900" height="105" />
+          </a>
+          <p class="muted">Built in the garage. Documented on YouTube.</p>
+          <p><a href={channelUrl} rel="noopener" target="_blank">YouTube: @stradascholar</a></p>
+        </div>
+        <ul>
+          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+          <li><a href="/about/">About &amp; affiliate disclosure</a></li>
+        </ul>
+      </div>
+      <div class="wrap muted small">
+        Some links on this site may be affiliate links: if you buy through them, the channel may earn a commission at no extra cost to you.
+      </div>
+    </footer>
+
+    <script>
+      const root = document.documentElement;
+      document.querySelector('.theme')!.addEventListener('click', () => {
+        const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+        root.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+      });
+      const burger = document.querySelector('.burger')!;
+      burger.addEventListener('click', () => {
+        const open = burger.getAttribute('aria-expanded') !== 'true';
+        burger.setAttribute('aria-expanded', String(open));
+        document.body.classList.toggle('menu-open', open);
+      });
+    </script>
+
+    <style>
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--overlay);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+      .top-in {
+        max-width: var(--wrap);
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        min-height: 60px;
+      }
+      .logo { display: block; flex: 0 1 260px; min-width: 0; }
+      .logo img { width: 100%; height: auto; }
+      .logo-foot { width: min(320px, 100%); }
+      .menu { margin-left: auto; }
+      .menu ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; }
+      .menu a {
+        display: block;
+        padding: 8px 9px;
+        font: 600 0.82rem/1 var(--head);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 2px solid transparent;
+      }
+      .menu a:hover { color: var(--text); }
+      .menu a[aria-current='page'] { color: var(--text); border-bottom-color: var(--m-red); }
+      .tools { display: flex; align-items: center; gap: 10px; }
+      .theme { background: none; border: 0; padding: 6px; cursor: pointer; }
+      .track {
+        display: block;
+        width: 38px;
+        height: 20px;
+        border-radius: 10px;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        position: relative;
+      }
+      .knob {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--m-light);
+        transition: transform 0.2s;
+      }
+      :global([data-theme='light']) .knob { transform: translateX(18px); background: var(--m-dark); }
+      .burger { display: none; background: none; border: 1px solid var(--line); padding: 9px 8px; cursor: pointer; }
+      .burger span { display: block; width: 20px; height: 2px; background: var(--text); }
+      .burger span + span { margin-top: 4px; }
+
+      @media (max-width: 1100px) {
+        .burger { display: block; }
+        .tools { margin-left: auto; }
+        .menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--bg);
+          border-bottom: 1px solid var(--line);
+          max-height: calc(100dvh - 66px);
+          overflow-y: auto;
+        }
+        :global(body.menu-open) .menu { display: block; }
+        .menu ul {
+          flex-direction: column;
+          max-width: var(--wrap);
+          margin: 0 auto;
+          padding: 8px var(--gutter) 16px;
+        }
+        .menu a { padding: 14px 0; font-size: 1.05rem; border-bottom: 1px solid var(--line); }
+        .menu a[aria-current='page'] { border-bottom-color: var(--line); color: var(--m-red); }
+      }
+      @media (max-width: 320px) {
+        .top-in { gap: 8px; }
+      }
+
+      .foot { border-top: 1px solid var(--line); padding: 48px 0 32px; margin-top: 40px; }
+      .foot-in { display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; }
+      .foot ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        columns: 2;
+        column-gap: 40px;
+      }
+      .foot li a { color: var(--muted); text-decoration: none; line-height: 2; }
+      .foot li a:hover { color: var(--text); }
+      .small { font-size: 0.85rem; margin-top: 24px; }
+    </style>
+  </body>
+</html>

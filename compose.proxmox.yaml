@@ -1,0 +1,23 @@
+# Overrides for the Proxmox VM behind Traefik (same Traefik as rgcapital: network traefik-network,
+# entrypoint websecure, certresolver ionos). www redirects to the apex.
+services:
+  site:
+    ports: !reset []
+    networks: [traefik]
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: traefik-network
+      traefik.http.routers.stradascholar.rule: Host(`stradascholar.com`) || Host(`www.stradascholar.com`)
+      traefik.http.routers.stradascholar.entrypoints: websecure
+      traefik.http.routers.stradascholar.tls: "true"
+      traefik.http.routers.stradascholar.tls.certresolver: ionos
+      traefik.http.routers.stradascholar.middlewares: stradascholar-www
+      traefik.http.middlewares.stradascholar-www.redirectregex.regex: ^https://www\.stradascholar\.com/(.*)
+      traefik.http.middlewares.stradascholar-www.redirectregex.replacement: https://stradascholar.com/$${1}
+      traefik.http.middlewares.stradascholar-www.redirectregex.permanent: "true"
+      traefik.http.services.stradascholar.loadbalancer.server.port: "80"
+
+networks:
+  traefik:
+    name: traefik-network
+    external: true

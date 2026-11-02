@@ -1,0 +1,6 @@
+.git
+.superpowers
+site/node_modules
+site/dist
+site/.astro
+docs
