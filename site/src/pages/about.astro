@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { channelUrl } from '../nav';
+---
+
+<Base title="About & affiliate disclosure" description="About Lucas Rodrigues, the stradascholar channel, and how links on this site work.">
+  <PageHead label="About" title="Enjoy, preserve, repeat">
+    <p>stradascholar is Lucas Rodrigues' garage, opened up.</p>
+  </PageHead>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>Lucas</h2>
+      <p>
+        Lucas has been into cars for as long as he can remember, thanks to his dad. He has owned some interesting cars over the years and used to run an automotive
+        business. He's mechanically inclined: when something breaks, he'd rather fix it himself than send it somewhere else.
+      </p>
+      <p>
+        That's what <a href={channelUrl} target="_blank" rel="noopener">the YouTube channel</a> is about: cool car projects, keeping these cars on the road for as long as
+        possible, maintenance, and general how-to videos. This site keeps the full record of each build, every part and tool, and where it all happens in the videos.
+      </p>
+
+      <h2>Nick</h2>
+      <p>
+        Nick Petrachuk and Lucas have been friends since their skateboarding days, about 16 years ago. Nick fabricates and wrenches on the builds; he made the custom
+        exhausts on the 1M and the X5. He has his own channel with his single-turbo E30, plus service, maintenance and fabrication content:
+        <a href="https://www.youtube.com/@NicholasPetrachuk" target="_blank" rel="noopener">@NicholasPetrachuk</a>.
+      </p>
+
+      <h2 id="disclosure">Affiliate disclosure</h2>
+      <p>
+        Some "Shop" links on this site are, or will become, affiliate links. If you buy through one, the channel may earn a commission at no extra cost to you. It never
+        changes which parts are listed: everything here is what Lucas actually used, named in his videos.
+      </p>
+      <p>Where there's no reliable place to buy a part (OEM conversions, custom fabrication, discontinued items), it's marked "No link". Prices aren't listed because they change.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose { max-width: 760px; }
+  .prose h2 { margin-top: 1.4em; }
+</style>

@@ -1,12 +1,75 @@
 ---
 import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import CarCard from '../components/CarCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { getCars, getVideos } from '../lib/content';
+import { carPhotos } from '../lib/photos';
+import { thumbUrl } from '../lib/links';
+import { channelUrl } from '../nav';
+
+const cars = await getCars();
+const videos = await getVideos();
+const names = Object.fromEntries(cars.map((c) => [c.id, `${c.data.year} ${c.data.name}`]));
+const firstVideo = (slug: string) => videos.find((v) => v.data.car === slug)?.id;
+const heroCar = cars.find((c) => carPhotos(c.id).hero);
+const hero = heroCar && carPhotos(heroCar.id).hero;
+const partCount = cars.reduce((n, c) => n + c.data.parts.length, 0);
 ---
 
-<Base title="Home">
+<Base title="Home" image={hero?.src}>
+  <Hero photo={hero} fallback={videos[0] && thumbUrl(videos[0].id)} alt="Lucas's BMWs" tall>
+    <p class="label">Enjoy, preserve, repeat</p>
+    <h1>The garage,<br />documented.</h1>
+    <p class="lede">Every BMW Lucas builds on <a href={channelUrl} target="_blank" rel="noopener">@stradascholar</a>: what was done, every part and tool, and the moment in the video where it happens.</p>
+    <div class="actions">
+      <a class="btn" href="/builds/">See the builds</a>
+      <a class="btn btn-ghost" href="/gear-tools/">Parts &amp; tools</a>
+    </div>
+  </Hero>
+
   <section class="section">
     <div class="wrap">
-      <p class="label">Built in the garage. Documented on YouTube.</p>
-      <h1>Three BMWs.<br />Every part.</h1>
+      <div class="row">
+        <h2>The builds</h2>
+        <span class="muted">{cars.length} cars · {partCount} parts and tools</span>
+      </div>
+      <div class="grid">{cars.map((car) => <CarCard car={car} videoId={firstVideo(car.id)} />)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="row">
+        <h2>Latest videos</h2>
+        <a href="/videos/">All videos →</a>
+      </div>
+      <div class="grid">{videos.slice(0, 3).map((v) => <VideoCard video={v} carName={v.data.car && names[v.data.car]} />)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap about">
+      <div>
+        <p class="label">Who's in the garage</p>
+        <h2>Lucas Rodrigues</h2>
+      </div>
+      <div>
+        <p>Into cars for as long as he can remember, thanks to his dad. A former automotive business owner who would rather fix it himself than send it out. The channel covers cool car projects, keeping these cars on the road as long as possible, maintenance, and how-tos.</p>
+        <p><a href="/about/">More about the channel →</a></p>
+      </div>
     </div>
   </section>
 </Base>
+
+<style>
+  .lede { max-width: 56ch; font-size: 1.1rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 20px; }
+  .row h2 { margin: 0; }
+  .about { display: grid; gap: 24px 48px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
+  .about p { max-width: 64ch; }
+  @media (max-width: 760px) {
+    .about { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import CarCard from '../../components/CarCard.astro';
+import { getCars, getVideos } from '../../lib/content';
+
+const cars = await getCars();
+const videos = await getVideos();
+const firstVideo = (slug: string) => videos.find((v) => v.data.car === slug)?.id;
+---
+
+<Base title="Builds" description="Every car in Lucas's garage, with the full build: parts, tools and videos.">
+  <PageHead label="Builds" title="The cars">
+    <p>One page per car, updated with every video: overview, spec, every part and tool, and where each one shows up on the channel.</p>
+  </PageHead>
+  <section class="section">
+    <div class="wrap grid">{cars.map((car) => <CarCard car={car} videoId={firstVideo(car.id)} />)}</div>
+  </section>
+</Base>

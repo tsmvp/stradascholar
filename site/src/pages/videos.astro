@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { getCars, getVideos } from '../lib/content';
+import { channelUrl } from '../nav';
+
+const cars = await getCars();
+const videos = await getVideos();
+const names = Object.fromEntries(cars.map((c) => [c.id, `${c.data.year} ${c.data.name}`]));
+---
+
+<Base title="Videos" description="Every video from the stradascholar YouTube channel.">
+  <PageHead label="Videos" title="From the channel">
+    <p>Every episode, newest first. <a href={channelUrl} target="_blank" rel="noopener">Subscribe on YouTube</a> to catch the next one.</p>
+  </PageHead>
+  <section class="section">
+    <div class="wrap grid">{videos.map((v) => <VideoCard video={v} carName={v.data.car && names[v.data.car]} />)}</div>
+  </section>
+</Base>

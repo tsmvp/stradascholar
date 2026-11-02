@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from './PageHead.astro';
+import { channelUrl } from '../nav';
+
+interface Props {
+  title: string;
+  about: string;
+}
+
+const { title, about } = Astro.props;
+---
+
+<Base title={title} description={about}>
+  <PageHead label="Coming soon" title={title}>
+    <p>{about}</p>
+    <p>Nothing here yet. New videos land on the channel first, and this page fills in as they do.</p>
+  </PageHead>
+  <section class="section">
+    <div class="wrap actions">
+      <a class="btn" href={channelUrl} target="_blank" rel="noopener">Subscribe on YouTube</a>
+      <a class="btn btn-ghost" href="/builds/">See the builds</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import type { Car } from '../lib/content';
+import { carPhotos } from '../lib/photos';
+import { thumbUrl } from '../lib/links';
+
+interface Props {
+  car: Car;
+  /** Fallback YouTube id when the car has no hero photo. */
+  videoId?: string;
+}
+
+const { car, videoId } = Astro.props;
+const d = car.data;
+const { hero } = carPhotos(car.id);
+const alt = `${d.year} BMW ${d.name}`;
+---
+
+<a class="card" href={`/builds/${car.id}/`}>
+  <span class="img">
+    {
+      hero ? (
+        <Image src={hero} alt={alt} widths={[480, 800, 1200]} sizes="(max-width: 700px) 100vw, 33vw" loading="lazy" />
+      ) : (
+        videoId && <img src={thumbUrl(videoId)} alt={alt} loading="lazy" />
+      )
+    }
+  </span>
+  <span class="label">{d.chassis} · {d.engine}</span>
+  <span class="name">{d.year} {d.name}</span>
+  <span class="hook">{d.hook}</span>
+  <span class="more">Explore the build →</span>
+</a>
+
+<style>
+  .card { display: block; color: var(--text); text-decoration: none; background: var(--surface); border: 1px solid var(--line); }
+  .img { display: block; overflow: hidden; }
+  .img :global(img) { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform 0.3s; }
+  .card:hover .img :global(img) { transform: scale(1.03); }
+  .label { display: block; padding: 16px 18px 0; }
+  .name { display: block; padding: 6px 18px 0; font: italic 800 1.6rem/1.05 var(--head); text-transform: uppercase; }
+  .hook { display: block; padding: 8px 18px 0; color: var(--muted); }
+  .more { display: block; padding: 14px 18px 18px; color: var(--m-red); font: 600 0.85rem/1 var(--head); letter-spacing: 0.1em; text-transform: uppercase; }
+</style>

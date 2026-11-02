@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { getCars } from '../lib/content';
+import { buyUrl, formatTime, thumbUrl, watchUrl } from '../lib/links';
+import { affiliateIds } from '../affiliates';
+
+const cars = (await getCars()).filter((c) => c.data.tutorials.length);
+---
+
+<Base title="Tutorials" description="How-to segments from Lucas's videos, each with the tools and parts used.">
+  <PageHead label="Tutorials" title="How it's done">
+    <p>The how-to moments from the videos. Each one jumps straight to the start of the job, with the tools and parts used.</p>
+  </PageHead>
+  {
+    cars.map((car) => (
+      <section class="section">
+        <div class="wrap">
+          <p class="label">{car.data.chassis}</p>
+          <h2>
+            <a class="carlink" href={`/builds/${car.id}/`}>{car.data.year} {car.data.name}</a>
+          </h2>
+          <div class="list">
+            {car.data.tutorials.map((t) => {
+              const used = t.uses.map((name) => car.data.parts.find((p) => p.name === name)!);
+              return (
+                <article class="tut">
+                  <a class="thumb" href={watchUrl(t.video, t.at)} target="_blank" rel="noopener">
+                    <img src={thumbUrl(t.video)} alt="" loading="lazy" width="1280" height="720" />
+                    <span class="time">▶ {formatTime(t.at)}</span>
+                  </a>
+                  <div>
+                    <h3>{t.title}</h3>
+                    <p class="muted">{t.summary}</p>
+                    {used.length > 0 && (
+                      <ul class="uses">
+                        {used.map((p) =>
+                          p.links[0] ? (
+                            <li>
+                              <a href={buyUrl(p.links[0].store, p.links[0].url, affiliateIds)} target="_blank" rel="sponsored noopener">
+                                {p.name}
+                              </a>
+                            </li>
+                          ) : (
+                            <li>{p.name}</li>
+                          ),
+                        )}
+                      </ul>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</Base>
+
+<style>
+  .carlink { color: inherit; text-decoration: none; }
+  .list { display: grid; gap: 28px; margin-top: 24px; }
+  .tut { display: grid; gap: 20px; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); align-items: start; }
+  .tut h3 { margin-bottom: 6px; }
+  .tut p { margin: 0 0 10px; }
+  .thumb { position: relative; display: block; overflow: hidden; background: var(--surface); }
+  .thumb img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .time { position: absolute; left: 10px; bottom: 10px; background: var(--m-red); color: #fff; padding: 4px 8px; font: 600 0.85rem/1 var(--head); letter-spacing: 0.06em; }
+  .uses { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .uses li { border: 1px solid var(--line); padding: 4px 10px; font-size: 0.85rem; color: var(--muted); }
+  .uses a { color: var(--link); text-decoration: none; }
+  @media (max-width: 640px) {
+    .tut { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>

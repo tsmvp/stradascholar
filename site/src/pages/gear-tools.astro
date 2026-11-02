@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import PartsTable from '../components/PartsTable.astro';
+import { getCars } from '../lib/content';
+
+const cars = await getCars();
+const all = cars.flatMap((car) => car.data.parts.map((part) => ({ part, car: { slug: car.id, name: `${car.data.year} ${car.data.name}` } })));
+const rows = [...all.filter((r) => r.part.kind === 'tool'), ...all.filter((r) => r.part.kind === 'part')];
+---
+
+<Base title="Gear & Tools" description="Every tool and part used on Lucas's BMWs, with links to buy and to the moment in the video.">
+  <PageHead label="Gear & Tools" title="Everything in the garage">
+    <p>Tools first, then every part across all the builds. Filter by category or car; ▶ jumps to the moment in the video.</p>
+  </PageHead>
+  <section class="section">
+    <div class="wrap">
+      <PartsTable rows={rows} byCar />
+    </div>
+  </section>
+</Base>
