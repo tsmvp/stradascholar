@@ -1,0 +1,137 @@
+name: E92 M3 Frozen Blue
+year: 2013
+chassis: E92
+engine: S65 4.0L V8
+headline: The last great analog M3
+hook: One of the last 150, GTS-inspired, owned since 2017.
+order: 1
+overview: |
+  Lucas picked this M3 up from a dealer in the Greater Toronto Area in May 2017, bone stock. The carbon bits went on as soon as he got home, and a week later he drove it to Tampa. It replaced a W204 C63 that he grew to hate after a day at ICAR in Montreal. The plow understeer convinced him BMW and Porsche build cars around how they drive.
+
+  It's a Frozen Edition competition package car, one of the last 150 built and from the last run of naturally aspirated M engines in M cars. This one is Monte Carlo blue under a satin clear. The build pulls from the GTS without the $200,000 price: a Mumbray Motorsport cage that's nearly a one-to-one copy of the GTS cage, Recaro Pole Positions, GTS sills, wheel and transmission software.
+
+  It's the car Lucas took the buy-once, cry-once approach with, and both cupholders still work. Next up: F80 brakes, with hubs and spindles.
+spec:
+  - { label: Chassis, value: E92 M3 coupe (2013), competition package }
+  - { label: Edition, value: "Frozen Edition, one of the last 150" }
+  - { label: Paint, value: Monte Carlo blue with satin clear }
+  - { label: Engine, value: S65 4.0L V8, naturally aspirated }
+  - { label: Transmission, value: DCT with GTS software }
+  - { label: Owned since, value: May 2017 }
+stats:
+  - { label: Years owned, value: "~9" }
+  - { label: Engine, value: NA V8 }
+  - { label: Next, value: F80 brakes }
+setup:
+  - { label: Wheels, value: Factory-style 359M, refinished in silver }
+  - { label: Tires, value: Michelin Pilot Sport 4S }
+  - { label: Suspension, value: KW Clubsport coilovers }
+  - { label: Studs, value: FCP Euro wheel stud conversion }
+parts:
+  - name: Carbon front fangs, side skirts and rear wing
+    brand: RW Carbon
+    category: Exterior
+    video: 2yfzwYiONtw
+    at: 148
+  - name: Carbon mirror caps
+    brand: AutoTecknic
+    category: Exterior
+    note: Match the factory carbon weave on the roof.
+    video: 2yfzwYiONtw
+    at: 151
+  - name: Front lip and rear diffuser
+    brand: Mateo Motorsports
+    category: Exterior
+    note: From Jacksonville, Florida.
+    video: 2yfzwYiONtw
+    at: 157
+  - name: Paint-matched front reflectors
+    category: Exterior
+  - name: Style 359M wheels, refinished in silver
+    brand: BMW
+    category: Wheels & tires
+    video: 2yfzwYiONtw
+    at: 160
+  - name: Pilot Sport 4S tires
+    brand: Michelin
+    category: Wheels & tires
+    video: 2yfzwYiONtw
+    at: 166
+    links:
+      - { store: tirerack, url: "https://www.tirerack.com/tires/tires.jsp?tireMake=Michelin&tireModel=Pilot+Sport+4S" }
+  - name: Wheel stud conversion
+    brand: FCP Euro
+    category: Wheels & tires
+    links:
+      - { store: fcpeuro, url: "https://www.fcpeuro.com/search?q=wheel+stud+conversion" }
+  - name: Clubsport coilovers
+    brand: KW
+    category: Suspension
+    video: 2yfzwYiONtw
+    at: 167
+    links:
+      - { store: turner, url: "https://www.turnermotorsport.com/p-338395-e90e92-m3-kw-coilover-kit-clubsport/" }
+  - name: GTS door sills
+    brand: BMW
+    category: Interior
+    video: 2yfzwYiONtw
+    at: 173
+  - name: GTS steering wheel
+    brand: BMW
+    category: Interior
+    video: 2yfzwYiONtw
+    at: 173
+  - name: Shift paddles
+    brand: AutoTecknic
+    category: Interior
+    video: 2yfzwYiONtw
+    at: 175
+    links:
+      - { store: turner, url: "https://www.turnermotorsport.com/BMW-E92-M3/c-1315-bmw-shift-paddles/m-1245-autotecknic" }
+  - name: White cluster LED conversion
+    category: Interior
+    video: 2yfzwYiONtw
+    at: 177
+  - name: Pole Position seats
+    brand: Recaro
+    category: Interior
+    video: 2yfzwYiONtw
+    at: 179
+  - name: Roll cage and rear seat delete
+    brand: Mumbray Motorsport
+    category: Interior
+    note: Almost a one-to-one replica of the GTS cage.
+    video: 2yfzwYiONtw
+    at: 183
+  - name: Test pipes
+    brand: VRSF
+    category: Exhaust
+    video: 2yfzwYiONtw
+    at: 190
+  - name: Custom X-pipe
+    category: Exhaust
+    note: Replaces the secondary cats and resonators.
+    video: 2yfzwYiONtw
+    at: 194
+  - name: Race exhaust
+    brand: Gintani
+    category: Exhaust
+    video: 2yfzwYiONtw
+    at: 196
+  - name: Carbon plenum
+    brand: Eventuri
+    category: Engine
+    video: 2yfzwYiONtw
+    at: 201
+    links:
+      - { store: turner, url: "https://www.turnermotorsport.com/p-586654-eventuri-e9x-m3-s65-carbon-inlet-plenum/" }
+  - name: Engine tune
+    brand: Xclusive
+    category: Engine
+    video: 2yfzwYiONtw
+    at: 200
+  - name: GTS transmission flash
+    brand: BMW
+    category: Drivetrain
+    video: 2yfzwYiONtw
+    at: 205

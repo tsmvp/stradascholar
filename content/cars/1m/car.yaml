@@ -1,12 +1,153 @@
-name: 135i to 1M
+name: 135i 1M Conversion
 year: 2009
 chassis: E82
-engine: N54 single turbo
-headline: Stub
-hook: Stub
+engine: N54, single turbo
+headline: The 1M, for a quarter of the price
+hook: Full OEM 1M exterior, Garrett single turbo, around 550 whp.
 order: 2
-overview: Stub
+overview: |
+  This car started as a joke. Lucas and Nick were watching 1 Series videos one night when Lucas said he'd find someone to trade his 1982 E24 633CSi for a 135i. Not long after, he did.
+
+  Like a lot of 135i's, it came with a bit of power chased and the maintenance forgotten. The plan was Lucas's own idea of what the 1M should have been, for a fraction of what a real one costs. The exterior is a full OEM 1M conversion with the LCI updates. The rear quarters were made in steel rather than fiberglass: the arches were cut out, brackets welded on and the arches welded to the brackets. The car is wrapped in 3M satin white aluminum and still has its sunroof, the one tell that it isn't a real (always slick-top) 1M.
+
+  Under the hood, a Speedtech top-mount kit with a Garrett GTW3684R replaced the twin turbos. It wasn't built to chase numbers or the track: Lucas wanted a fast street car that's easy to live with, and the single turbo frees up room in the engine bay. No more dropping the subframe to reach the water pump.
+spec:
+  - { label: Chassis, value: E82 135i coupe (2009) }
+  - { label: Engine, value: N54 3.0L, Speedtech top-mount single turbo }
+  - { label: Turbo, value: Garrett GTW3684R }
+  - { label: Clutch, value: DKM Stage 3 twin disc with flywheel }
+  - { label: Exterior, value: Full OEM 1M conversion, LCI, steel rear arches }
+  - { label: Finish, value: 3M satin white aluminum wrap }
+stats:
+  - { label: Wheel horsepower, value: "~550" }
+  - { label: All-in (DIY, CAD), value: "~$25k" }
+  - { label: 1M exterior incl. paint, value: "~$13k" }
+setup:
+  - { label: Wheels, value: "18-inch BMW M Parallel (from an E38 750)" }
+  - { label: Tires, value: Firestone Firehawk Indy 500 }
+  - { label: Suspension, value: BC Racing BR coilovers }
+  - { label: Studs, value: FCP Euro wheel stud conversion }
 parts:
-  - name: BC Racing BR coilovers
+  - name: OEM 1M exterior conversion
+    brand: BMW
+    category: Exterior
+    note: Everything from the dealer except the rear quarters.
+    video: YE4NMkFtxJY
+    at: 90
+  - name: Steel rear arches, fabricated and welded
+    category: Exterior
+    note: Arches cut out, brackets welded on, arches welded to the brackets. Factory 1M quarters are about $9,500 a side.
+    video: YE4NMkFtxJY
+    at: 99
+  - name: LCI conversion
+    brand: BMW
+    category: Exterior
+    video: YE4NMkFtxJY
+    at: 133
+  - name: 2080 Satin White Aluminum wrap (2080-S120)
+    brand: 3M
+    category: Exterior
+    video: YE4NMkFtxJY
+    at: 131
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=3M+2080+S120+satin+white+aluminum" }
+  - name: M3-style cowl
+    category: Exterior
+  - name: BR Series coilovers
     brand: BC Racing
     category: Suspension
+    video: YE4NMkFtxJY
+    at: 135
+    links:
+      - { store: turner, url: "https://www.turnermotorsport.com/p-555856-br-series-coilover-suspension-kit/" }
+  - name: 18-inch M Parallel wheels (E38 750)
+    brand: BMW
+    category: Wheels & tires
+    video: YE4NMkFtxJY
+    at: 137
+  - name: Firehawk Indy 500 tires
+    brand: Firestone
+    category: Wheels & tires
+    video: YE4NMkFtxJY
+    at: 143
+    links:
+      - { store: tirerack, url: "https://www.tirerack.com/tires/tires.jsp?tireMake=Firestone&tireModel=Firehawk+Indy+500" }
+  - name: Wheel stud conversion
+    brand: FCP Euro
+    category: Wheels & tires
+    video: YE4NMkFtxJY
+    at: 146
+    links:
+      - { store: fcpeuro, url: "https://www.fcpeuro.com/search?q=wheel+stud+conversion" }
+  - name: Top-mount single turbo kit
+    brand: Speedtech
+    category: Engine
+    note: Zero issues during installation.
+    video: YE4NMkFtxJY
+    at: 153
+  - name: GTW3684R turbocharger
+    brand: Garrett
+    category: Engine
+    video: YE4NMkFtxJY
+    at: 157
+  - name: 3-port MAC boost solenoid
+    brand: MAC
+    category: Engine
+    video: YE4NMkFtxJY
+    at: 167
+  - name: Ignition coils
+    brand: Turner Motorsport
+    category: Engine
+    note: Turner's blue coils.
+    video: YE4NMkFtxJY
+    at: 171
+  - name: Spark plugs, one step colder
+    brand: NGK
+    category: Engine
+    video: YE4NMkFtxJY
+    at: 171
+  - name: Walbro 450 bucketed fuel pump kit
+    brand: Fuel-It
+    category: Engine
+    video: YE4NMkFtxJY
+    at: 176
+    links:
+      - { store: turner, url: "https://www.turnermotorsport.com/BMW-E82/m-1373-fuel-it-or-" }
+  - name: 7.5-inch Competition intercooler
+    brand: VRSF
+    category: Engine
+    video: YE4NMkFtxJY
+    at: 181
+    links:
+      - { store: turner, url: "https://www.turnermotorsport.com/p-585058-vrsf-75-stepped-competition-hd-intercooler-upgrade/" }
+  - name: Oil catch can
+    category: Engine
+  - name: Stage 3 twin-disc clutch and flywheel kit
+    brand: DKM
+    category: Drivetrain
+    note: The old clutch lasted exactly one pull on the new turbo. Flywheel bolt count depends on build date; check fitment.
+    video: YE4NMkFtxJY
+    at: 185
+    links:
+      - { store: turner, url: "https://www.turnermotorsport.com/c-36-bmw-clutch-flywheel/m-1274-dkm" }
+  - name: Crank seal guard
+    brand: Turner Motorsport
+    category: Engine
+    video: YE4NMkFtxJY
+    at: 192
+    links:
+      - { store: turner, url: "https://www.turnermotorsport.com/p-15876877-n52n54n55s55-crank-seal-guard-anodized-blue/" }
+  - name: Aluminum valve cover kit
+    brand: ECS Tuning
+    category: Engine
+    video: YE4NMkFtxJY
+    at: 194
+  - name: Custom exhaust
+    brand: Nick P
+    category: Exhaust
+    note: Full custom system built by Nick (@NicholasPetrachuk).
+  - name: Oil pan gasket, water pump, thermostat and coolant hoses
+    category: Maintenance
+    note: Done while the engine was apart for the turbo swap.
+    video: YE4NMkFtxJY
+    at: 200

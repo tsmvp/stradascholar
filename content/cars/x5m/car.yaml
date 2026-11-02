@@ -1,0 +1,298 @@
+name: X5 35d X5M Conversion
+year: 2011
+chassis: E70
+engine: 3.0L diesel
+headline: The X5 BMW never built
+hook: $4,200, 432,000 km, turned into a diesel X5M in a week.
+order: 3
+overview: |
+  Lucas found this 2011 X5 35d on Facebook Marketplace listed at $6,000 and paid $4,200. It has 432,000 km on the clock. The pictures looked better than the car, but it had been well maintained until it was parked a few months earlier, it was already fully deleted, and it mostly needed a brake booster and brakes to get driving.
+
+  Episode 1 was a clean bill of health: a brake switch fix, the 20% tint stripped off every window (windshield included), white cluster LEDs, an oil change, and pads and rotors at all four corners. Vapor Auto finished it with a full detail and a surprise badge delete.
+
+  Episode 2 is the conversion. With Nick, Lucas replaced the rain trays and start/stop button and stripped the front end and sides. They pulled an all-nighter on bodywork, then wrapped the car, fitted the X5M bumpers, skirts, grilles and ducts, and built a quad-exit exhaust from the stock pipes. Lucas calls it the world's first diesel X5M, done in just under a week. A lift kit, wheels and tires come next.
+spec:
+  - { label: Chassis, value: E70 X5 xDrive35d (2011) }
+  - { label: Engine, value: 3.0L six-cylinder diesel, deleted }
+  - { label: Mileage, value: "432,000 km at purchase" }
+  - { label: Exterior, value: X5M bumpers, side skirts, grilles and ducts; full wrap }
+  - { label: Exhaust, value: Custom quad-exit Y-pipe by Nick }
+stats:
+  - { label: Purchase price, value: "$4,200" }
+  - { label: Kilometres, value: "432k" }
+  - { label: Conversion time, value: "< 1 week" }
+setup:
+  - { label: Brakes, value: "New pads and rotors front and rear; ECS stainless lines (previous owner)" }
+  - { label: Suspension, value: Lift kit coming in the next episode }
+  - { label: Wheels & tires, value: New set coming in the next episode }
+parts:
+  - name: Brake light switch adjustment
+    category: Brakes
+    note: The switch wasn't touching the pedal after the brake booster swap.
+    video: GZ7XEOMd3QQ
+    at: 132
+  - name: Brake booster
+    category: Brakes
+    note: Replaced to get the car home to Ottawa.
+    video: GZ7XEOMd3QQ
+    at: 136
+  - name: Window tint removal
+    category: Exterior
+    note: The previous owner had 20% on every window, windshield included.
+    video: GZ7XEOMd3QQ
+    at: 179
+  - name: White cluster LED conversion
+    category: Interior
+    note: Done by Dylan; climate control stays amber.
+    video: GZ7XEOMd3QQ
+    at: 195
+  - name: Oil filter kit
+    category: Maintenance
+    note: Comes with a new O-ring and crush washer.
+    video: GZ7XEOMd3QQ
+    at: 268
+  - name: 5W-30 engine oil
+    category: Maintenance
+    note: About 8 quarts; 5 L in first, the rest with the car on the ground.
+    video: GZ7XEOMd3QQ
+    at: 345
+  - name: Front brake pads and rotors
+    category: Brakes
+    video: GZ7XEOMd3QQ
+    at: 367
+  - name: Rear brake pads and rotors
+    category: Brakes
+    note: The new pads' clips sat recessed, so the old, shorter clips went back in.
+    video: GZ7XEOMd3QQ
+    at: 650
+  - name: Stainless brake lines
+    brand: ECS Tuning
+    category: Brakes
+    note: Already installed by the previous owner.
+    video: GZ7XEOMd3QQ
+    at: 465
+  - name: Rain trays (aftermarket)
+    category: Maintenance
+    note: Cracked trays let water pool on cylinders 5 and 6 and foul injectors. About $70 on Amazon vs. far more from BMW; the center OEM piece was reused for its better seal.
+    video: Hcu7Na9ciYo
+    at: 94
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=BMW+E70+X5+rain+tray+cabin+filter+housing" }
+  - name: Start/stop button
+    category: Interior
+    note: The original was faded.
+    video: Hcu7Na9ciYo
+    at: 126
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=BMW+E70+X5+start+stop+button" }
+  - name: Interior detail and badge delete
+    brand: Vapor Auto
+    category: Exterior
+    video: GZ7XEOMd3QQ
+    at: 1075
+  - name: X5M exterior conversion (bumpers, side skirts, grilles, trim)
+    brand: BMW
+    category: Exterior
+    video: Hcu7Na9ciYo
+    at: 135
+  - name: Full vinyl wrap
+    category: Exterior
+    video: Hcu7Na9ciYo
+    at: 683
+  - name: X5M front air ducts
+    brand: BMW
+    category: Exterior
+    note: The X5M feeds a secondary oil cooler; the diesel only has the duct.
+    video: Hcu7Na9ciYo
+    at: 1332
+  - name: DEF system removal and wiring cleanup
+    category: Electrical
+    video: Hcu7Na9ciYo
+    at: 1349
+  - name: Turn signal polarity swap
+    category: Electrical
+    note: Needed on the 1 Series conversion; not needed here.
+    video: Hcu7Na9ciYo
+    at: 956
+  - name: Custom quad-exit exhaust
+    brand: Nick P
+    category: Exhaust
+    note: Stock pipes cut at the muffler, the 45° sections reused, a Y-pipe welded in and tips made from leftover 3-inch pipe.
+    video: Hcu7Na9ciYo
+    at: 1062
+  - name: Fusion All-In-One spray paint, gloss black
+    brand: Krylon
+    category: Exterior
+    note: Used on the inner grilles and exhaust tips. Lucas has never had it crack or peel.
+    video: Hcu7Na9ciYo
+    at: 1169
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=Krylon+Fusion+All-In-One+gloss+black" }
+  - name: Trim removal tool set
+    kind: tool
+    category: Tools
+    note: Saved Lucas more than a couple times.
+    video: Hcu7Na9ciYo
+    at: 144
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=trim+removal+tool+set" }
+  - name: 240-piece push clip assortment
+    brand: Titan
+    kind: tool
+    category: Tools
+    note: About $20; replaced the spinning bumper bracket studs.
+    video: Hcu7Na9ciYo
+    at: 1034
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=Titan+240+piece+push+clip+assortment" }
+  - name: Fishing line
+    kind: tool
+    category: Tools
+    note: Cuts through the double-sided tape behind the door blades.
+    video: Hcu7Na9ciYo
+    at: 269
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=braided+fishing+line" }
+  - name: Torx bit set (T8 to T45)
+    kind: tool
+    category: Tools
+    note: T45 for the caliper sliders, T30 for the fenders, T25, T20 and T8 for trim.
+    video: GZ7XEOMd3QQ
+    at: 431
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=torx+bit+socket+set+T8+T45" }
+  - name: E-Torx socket set
+    kind: tool
+    category: Tools
+    note: E18 for the front caliper brackets.
+    video: GZ7XEOMd3QQ
+    at: 445
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=E-Torx+socket+set" }
+  - name: Metric socket and wrench set
+    kind: tool
+    category: Tools
+    note: 17 mm drain plug and wheels, 14 mm exhaust, 13 mm skirt brackets, 10 mm and 8 mm trim bolts.
+    video: GZ7XEOMd3QQ
+    at: 256
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=metric+socket+wrench+set" }
+  - name: Impact wrench
+    kind: tool
+    category: Tools
+    video: GZ7XEOMd3QQ
+    at: 367
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=cordless+impact+wrench" }
+  - name: Brake caliper piston compressor
+    kind: tool
+    category: Tools
+    video: GZ7XEOMd3QQ
+    at: 502
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=brake+caliper+piston+compressor+tool" }
+  - name: Brake caliper grease
+    kind: tool
+    category: Tools
+    video: GZ7XEOMd3QQ
+    at: 519
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=brake+caliper+grease" }
+  - name: Anti-seize compound
+    kind: tool
+    category: Tools
+    video: GZ7XEOMd3QQ
+    at: 740
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=anti-seize+compound" }
+  - name: Fluid siphon
+    kind: tool
+    category: Tools
+    note: Lowers the brake fluid level before pushing the pistons back.
+    video: GZ7XEOMd3QQ
+    at: 792
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=fluid+extractor+siphon" }
+  - name: Sandpaper (180, 320, 600 grit) and red scuff pads
+    kind: tool
+    category: Tools
+    video: Hcu7Na9ciYo
+    at: 544
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=automotive+sandpaper+assortment+180+320+600" }
+  - name: Wrap squeegee and heat gun
+    kind: tool
+    category: Tools
+    video: Hcu7Na9ciYo
+    at: 873
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=vinyl+wrap+squeegee+heat+gun+kit" }
+  - name: Silicone lubricant
+    kind: tool
+    category: Tools
+    note: Helps slide the exhaust hangers back on.
+    video: Hcu7Na9ciYo
+    at: 1209
+    links:
+      - { store: amazon, url: "https://www.amazon.com/s?k=silicone+lubricant+spray" }
+tutorials:
+  - title: Diagnosing a brake light switch
+    summary: Reading the codes and finding a switch that wasn't touching the pedal after a booster swap.
+    video: GZ7XEOMd3QQ
+    at: 76
+    uses: [Brake light switch adjustment]
+  - title: Oil change on the 35d
+    summary: Engine cover and intake piece out, drain plug, filter housing, and filling about 8 quarts of 5W-30.
+    video: GZ7XEOMd3QQ
+    at: 212
+    uses: [Oil filter kit, 5W-30 engine oil, Metric socket and wrench set]
+  - title: Front brake pads and rotors
+    summary: Set screw, slider pins, caliper bracket, cleaning and greasing, and pushing the piston back.
+    video: GZ7XEOMd3QQ
+    at: 367
+    uses: [Front brake pads and rotors, Torx bit set (T8 to T45), E-Torx socket set, Impact wrench, Brake caliper piston compressor, Brake caliper grease]
+  - title: Rear brake pads and rotors
+    summary: Same job, smaller parts, plus a stubborn rotor, a cleaned hub with anti-seize, and lowering the fluid level first.
+    video: GZ7XEOMd3QQ
+    at: 650
+    uses: [Rear brake pads and rotors, Torx bit set (T8 to T45), Anti-seize compound, Fluid siphon, Brake caliper piston compressor, Brake caliper grease]
+  - title: Replacing the rain trays
+    summary: Why cracked trays foul injectors, and swapping them in a few bolts.
+    video: Hcu7Na9ciYo
+    at: 59
+    uses: [Rain trays (aftermarket), Metric socket and wrench set, Torx bit set (T8 to T45)]
+  - title: Removing side skirts, brackets and door blades
+    summary: Clips, 8 mm and 13 mm bolts, and fishing line through the door blade tape.
+    video: Hcu7Na9ciYo
+    at: 141
+    uses: [Trim removal tool set, Fishing line, Metric socket and wrench set]
+  - title: Removing the front bumper and fenders
+    summary: Kidney grilles, bumper bolts and clips, fog light and PDC plugs, then the fenders.
+    video: Hcu7Na9ciYo
+    at: 335
+    uses: [Torx bit set (T8 to T45), Metric socket and wrench set]
+  - title: Bodywork before a wrap
+    summary: Grinding to bare metal, feathering, sealer, primer, and smoothing without hard edges.
+    video: Hcu7Na9ciYo
+    at: 527
+    uses: ["Sandpaper (180, 320, 600 grit) and red scuff pads"]
+  - title: Wrapping without fingers or creases
+    summary: Glassing the film, giving air an escape, and heating out a crease.
+    video: Hcu7Na9ciYo
+    at: 683
+    uses: [Full vinyl wrap, Wrap squeegee and heat gun]
+  - title: Mounting X5M rear bumper brackets with push clips
+    summary: Knocking out spinning studs and using push clips instead.
+    video: Hcu7Na9ciYo
+    at: 1010
+    uses: [240-piece push clip assortment]
+  - title: Building a quad-exit exhaust from stock pipes
+    summary: Hangers, slip joint, cutting at the muffler and reusing the 45° sections.
+    video: Hcu7Na9ciYo
+    at: 1062
+    uses: [Custom quad-exit exhaust, Silicone lubricant, Metric socket and wrench set]
+  - title: Refinishing grilles in gloss black
+    summary: Separating the inner grilles, scuffing, and three coats of Krylon Fusion.
+    video: Hcu7Na9ciYo
+    at: 1123
+    uses: ["Fusion All-In-One spray paint, gloss black"]

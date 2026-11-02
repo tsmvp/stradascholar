@@ -1,4 +1,17 @@
+# Every video on the channel, newest first. "car" ties a video to content/cars/<car>/.
+- id: 2yfzwYiONtw
+  title: The Last Great Analog BMW M3?
+  date: 2026-10-26
+  car: m3
 - id: YE4NMkFtxJY
   title: I Built A 1M Clone For a 1/4 of the Price of a Real One...
   date: 2026-10-19
   car: 1m
+- id: Hcu7Na9ciYo
+  title: I Built The X5 BMW Never Did...
+  date: 2026-10-10
+  car: x5m
+- id: GZ7XEOMd3QQ
+  title: I Bought a $4,200 BMW X5 With 432,000 KM…
+  date: 2026-10-02
+  car: x5m

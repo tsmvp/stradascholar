@@ -10,5 +10,6 @@ export const storeNames: Record<string, string> = {
   fcpeuro: 'FCP Euro',
   ecs: 'ECS Tuning',
   turner: 'Turner Motorsport',
+  tirerack: 'Tire Rack',
   maker: 'Manufacturer',
 };
